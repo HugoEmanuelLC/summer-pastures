@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+header {
+  background-color: blue;
+  opacity: 0.8;
+  color: white;
+  padding: 10px;
+}
+
+nav a {
+  padding: 5px 10px;
+}
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav ul li {
+  display: flex;
+}
+nav ul a {
+  text-decoration: none;
+  height: 100%;
+  padding: 15px 10px;
+  transition: 0.4s;
+}
+nav ul a:hover {
+  background-color: white;
+  color: darkblue;
+  transition: 0.4s;
+}
+nav ul a.active {
+  background-color: white;
+  color: darkblue;
+}/*# sourceMappingURL=style.css.map */

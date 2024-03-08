@@ -1,0 +1,35 @@
+nav {
+    
+    a{
+        padding: 5px 10px;
+    }
+
+    ul{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        li{
+            display: flex;
+        }
+    
+        a{
+            text-decoration: none;
+            height: 100%;
+            padding: 15px 10px;
+            transition: 0.4s;
+    
+            &:hover{
+                // text-decoration: underline;
+            background-color: white;
+            color: darkblue;
+                transition: 0.4s;
+            }
+        }
+    
+        a.active{
+            background-color: white;
+            color: darkblue;
+        }
+    }
+}

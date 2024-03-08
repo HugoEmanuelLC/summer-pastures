@@ -1,0 +1,25 @@
+ESPECIFICOS DE ANDROID Y IOS:
+
+COMPONENTES BASICOS:
+- Viw = div
+- Text = p
+- Image = img
+- TextInput = input
+- ScrollView // permet de scroller dans l'application
+
+- StyleSheet // perme de utiliser le css
+
+
+INTERFAZ DE USUARIO:
+- Button = button // mais sans pouvoir le styliser
+- Picker = select
+- Slider // permet la selection d'une valeur de differentes options
+- Switch (? = comme un button ?)
+
+
+LISTAS:
+- FlatList //un scroll avec une list de valeurs
+- SectionList = FlatList // mais avec des sections
+
+
+

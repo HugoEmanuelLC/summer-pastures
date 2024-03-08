@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import loginStyle from './loginStyle';
 import { account } from '../../../appwrite/config.js';
 
-export default function LoginScreen({navigation, value, click}) {
+export default function LoginScreen({navigation, route}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     
@@ -15,9 +15,9 @@ export default function LoginScreen({navigation, value, click}) {
             try {
                 const promise = await account.createEmailSession(email, password)
                 alert('logged')
-                value = promise;
-                click(promise);
-                navigation.navigate('Home');
+                route.params.validateConnection = true
+                route.params.validateIsAdmin = true
+                navigation.navigate('Home')
     
             } catch (error) {
                 alert("Wrong email or password")
@@ -61,6 +61,10 @@ export default function LoginScreen({navigation, value, click}) {
 
             <Pressable onPress={handleDeleteSession} style={loginStyle.btnSubmit}>
                 <Text style={loginStyle.color}> Ecraser connection </Text>
+            </Pressable>
+
+            <Pressable onPress={() => navigation.navigate('Home')} style={loginStyle.btnSubmit}>
+                <Text style={loginStyle.color}> Home </Text>
             </Pressable>
         </View>
     )

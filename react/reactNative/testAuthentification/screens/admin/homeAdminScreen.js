@@ -4,7 +4,7 @@ import { View, Text, Button } from "react-native";
 
 function homeAdminScreen({ navigation }) {
     return <View>
-        <Text>Home Screen user</Text>
+        <Text>Home Screen admin</Text>
         <Button
             title="Go to Admin"
             onPress={() => navigation.navigate("Page1")}

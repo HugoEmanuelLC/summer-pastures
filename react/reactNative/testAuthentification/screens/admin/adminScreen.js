@@ -1,12 +1,12 @@
 import React from "react";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Home from './admin/homeAdminScreen';
-import Page1 from './admin/page1AdminScreen';
+import Home from './componets/homeAdminScreen';
+import Page1 from './componets/page1AdminScreen';
 
 const Stack = createNativeStackNavigator();
 
-function AdminScreen({validateConnection, validateIsAdmin}) {
+function AdminScreen() {
     return (
         <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown: true}} >
             <Stack.Screen name="Home" component={Home} 

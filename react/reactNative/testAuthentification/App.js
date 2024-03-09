@@ -3,32 +3,22 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer, useFocusEffect } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import VerifSession from './screens/authentification/verifSession';
 import RegisterScreen from './screens/authentification/register/registerScreen';
 import LoginScreen from './screens/authentification/login/loginScreen';
-import Home from './screens/home/homeScreen';
 
 import React, { useEffect, useState, createContext } from 'react';
 
-import AdminScreen from './screens/adminScreen';
-import UsersScreen from './screens/usersScreen';
+import AdminScreen from './screens/admin/adminScreen';
+import UsersScreen from './screens/user/usersScreen';
 
 const Stack = createNativeStackNavigator();
-const {AuthContext} = createContext();
+export const AuthContext = createContext();
 
-function App() {
+function App(){
 
   const [isConnected, setIsConnected] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
-
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     isConnected: false,
-  //     isAdmin: false,
-  //   }
-  //   this.handleConnection = this.handleConnection.bind(this);
-  //   this.handleIsAdmin = this.handleIsAdmin.bind(this);
-  // }
 
   handleConnection = (value) => {
     // this.setState({ isConnected: value });
@@ -47,29 +37,43 @@ function App() {
     console.log("Is Admin: " + isAdmin);
   },[isConnected, isAdmin])
 
+
+  // return(
+  //   <AuthContext.Provider value={{isConnected, isAdmin, handleConnection, handleIsAdmin}}>
+  //     <NavigationContainer>
+  //       <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: true}}>
+  //         <Stack.Screen name="Register" component={RegisterScreen} />
+  //         <Stack.Screen name="Login" component={LoginScreen} />
+  //         <Stack.Screen name="Home" component={Home} />
+  //       </Stack.Navigator>
+  //     </NavigationContainer>
+  //   </AuthContext.Provider>
+  // )
+
+
+
   // render(){
     if (!isConnected) {
       return (
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: true}}>
-            <Stack.Screen name="Register" component={RegisterScreen} 
-              validateConnection={this.handleConnection}
-              validateIsAdmin={this.handleIsAdmin}
-            />
-            <Stack.Screen name="Login" component={LoginScreen}
-              validateConnection={handleConnection}
-              validateIsAdmin={handleIsAdmin}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
+        <AuthContext.Provider value={{handleConnection, handleIsAdmin}}>
+          <NavigationContainer>
+            <Stack.Navigator initialRouteName="VerifSession" screenOptions={{headerShown: true}}>
+              <Stack.Screen name='VerifSession' component={VerifSession} />
+              <Stack.Screen name="Register" component={RegisterScreen} />
+              <Stack.Screen name="Login" component={LoginScreen} /> 
+            </Stack.Navigator>
+          </NavigationContainer>
+        </AuthContext.Provider>
       );
       
     }
   
     return (
+      <AuthContext.Provider value={{handleConnection, handleIsAdmin}}>
         <NavigationContainer>
           {isAdmin ? <AdminScreen /> : <UsersScreen />}
         </NavigationContainer>
+      </AuthContext.Provider>
     );
   // }
 }

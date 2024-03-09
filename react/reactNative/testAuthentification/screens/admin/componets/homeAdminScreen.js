@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import { View, Text, Button } from "react-native";
 
 
-function homeUserScreen({ navigation }) {
+function HomeAdminScreen({ navigation }) {
     return <View>
-        <Text>Home Screen user</Text>
+        <Text>Home Screen admin</Text>
         <Button
-            title="Go to Admin"
+            title="Go to page 1 admin"
             onPress={() => navigation.navigate("Page1")}
         />
     </View>
 }
 
 
-export default homeUserScreen;
+export default HomeAdminScreen;

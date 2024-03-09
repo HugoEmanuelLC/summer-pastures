@@ -1,12 +1,16 @@
 import { View, Text, TextInput, Pressable } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
-import loginStyle from './loginStyle';
+import {AuthContext} from '../../../App.js';
+
+import loginStyle from './loginStyle.js';
 import { account } from '../../../appwrite/config.js';
 
 export default function LoginScreen({navigation, route}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const { handleConnection, handleIsAdmin} = useContext(AuthContext);
     
     const login = async () => {
         if (!email || !password) {
@@ -15,16 +19,13 @@ export default function LoginScreen({navigation, route}) {
             try {
                 const promise = await account.createEmailSession(email, password)
                 alert('logged')
-                route.params.validateConnection = true
-                route.params.validateIsAdmin = true
-                navigation.navigate('Home')
+                handleConnection(true)
     
             } catch (error) {
                 alert("Wrong email or password")
                 alert(error.message)
             }
         }
-        
     }
 
     const handleDeleteSession = async () => {
